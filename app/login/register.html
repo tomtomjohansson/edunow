@@ -1,0 +1,52 @@
+<div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+</div>
+
+<form ng-submit="register()">
+   <div ng-show="step1">
+   <h3>Registrering - steg 1</h3>
+   <div class="form-group">
+      <input required type="text" class="form-control" placeholder="Användarnamn" ng-model="user.username"/>
+   </div>
+   <div class="form-group">
+      <input required type="password" class="form-control" placeholder="Lösenord" ng-model="user.password"/>
+   </div>
+   <div class="form-group">
+      <input type="text" class="form-control" placeholder="Namn på företaget" ng-model="user.name" required/>
+   </div>
+   <div class="form-group">
+      <textarea class="form-control" placeholder="Beskrivning av företaget" ng-model="user.description" required></textarea>
+   </div>
+   <div class="form-group">
+      <input type="text" class="form-control" placeholder="Länk till logotyp" ng-model="user.image"/>
+   </div>
+   <div class="form-group">
+      <input type="email" class="form-control" placeholder="Kontakt - email" ng-model="user.email"/>
+   </div>
+   <div class="form-group">
+      <label for="intern">Kan ni tänka er att emot studenter som ska ut på LIA?</label>
+      <label><input required type="radio" name="intern" ng-model="user.interns" ng-value="true"/>Ja</label>
+      <label><input required type="radio" name="intern" ng-model="user.interns" ng-value="false"/>Nej</label>
+   </div>
+   <div class="form-group">
+      <label for="project">Kan ni tänka er att samarbeta med studenter som skriver examensarbete?</label>
+      <label><input required type="radio" name="project" ng-model="user.projects" ng-value="true"/>Ja</label>
+      <label><input required type="radio" name="project" ng-model="user.projects" ng-value="false"/>Nej</label>
+   </div>
+   <div class="form-group">
+      <label>Vilka teknologier/bibliotek/databaser eller annat är viktigast för ert företag?</label>
+      <input ng-model="searching" ng-focus="choices=true" type="text" placeholder="taggar">
+      <div class="choices" ng-show="choices">
+         <ul class="listChoices" ng-repeat="tech in technologies | orderBy:tech | filter:searching:strict">
+            <li ng-click="addTag(tech)" class="tag">{{tech}}</li>
+         </ul>
+      </div>
+   </div>
+   <ul class="tagChoices" ng-repeat="choice in user.specialties">
+      <li class="chosenTag">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i>
+</li>
+   </ul>
+   <br>
+   <button type="submit" class="submitter">Registrera</button>
+   </div>
+</form>

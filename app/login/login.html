@@ -1,0 +1,20 @@
+<div ng-show="error" class="alert alert-danger row">
+   <span>{{ error.message }}</span>
+</div>
+
+<div ng-hide="loggedIn">
+   <form ng-submit="logIn()">
+      <h3>Logga in</h3>
+      <div class="form-group">
+         <input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>
+      </div>
+      <div class="form-group">
+         <input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
+      </div>
+      <button type="submit" class="submitter">Logga in</button>
+   </form>
+   <h3>Inte medlem än? <span class="action"><a ui-sref="register">Registrera ditt företag nu<a></span></h3>
+</div>
+<div ng-show="loggedIn">
+   <button ng-click="logOut()" class="btn btn-primary">Logga ut</button>
+</div>

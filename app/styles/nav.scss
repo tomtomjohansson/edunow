@@ -1,0 +1,26 @@
+nav{
+   position:fixed;
+   left:0;
+   top:0;
+   bottom:0;
+   background-color: white;
+   padding: 30px;
+   box-shadow: 3px 0 30px rgba(0, 0, 0, 0.4);
+
+   li{
+      margin-bottom:20px;
+      color: $medium-grey;
+
+      .navlink{
+         color: $medium-grey;
+         font-family: 'Exo', sans-serif;
+         text-transform: uppercase;
+      }
+
+      i{
+         margin-right:10px;
+      }
+   }
+}
+
+h3{}

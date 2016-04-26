@@ -1,0 +1,97 @@
+// colors
+$light-grey: #F4F4F4;
+$medium-grey:#757575;
+$action: #2DB8E6;
+$yellow: #F6CC4C;
+$blue: #4C69F6;
+$off-black: #373737;
+
+// fonts
+$exo: 'Exo', sans-serif;
+
+@import 'nav';
+@import 'inputs';
+
+:root{
+   font-size: 16px;
+}
+
+*{
+   padding:0px;
+   margin:0px;
+}
+
+body{
+   width:100%;
+   height: 100%;
+   background-color: $light-grey;
+}
+
+.container{
+   width: 990px;
+   max-width: 96%;
+   margin:0 auto;
+}
+
+h1,h2,h3,h4{
+   font-family: 'Exo', sans-serif;
+   color:$off-black;
+}
+
+a{
+   text-decoration: none;
+   color:$blue;
+}
+
+ul{
+   list-style-type: none;
+}
+
+.action{
+   color:$blue;
+}
+
+#loginHeader{
+   background-color: $light-grey;
+   padding: 6px 20px 6px 20px;
+
+   a{
+      width:100%;
+      display: inline-block;
+      font-family: helvetica;
+      text-transform: uppercase;
+      text-align: right;
+      color:$medium-grey;
+   }
+}
+
+.logoHeader{
+   background-color: $blue;
+   padding: 6px 20px 6px 20px;
+
+   h1{
+      width:100%;
+      display: inline-block;
+      text-align: center;
+      font-size:2.2rem;
+      color:white;
+
+      span{
+         color:$yellow;
+      }
+   }
+}
+
+
+
+.animation {
+   .ng-enter {
+      transition: 0.3s;
+      opacity: 0;
+      transform:scale3d(0.9, 0.9, 0.9);
+   }
+   .ng-enter-active {
+      opacity: 1;
+      transform:scale3d(1, 1, 1);
+   }
+}

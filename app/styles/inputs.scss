@@ -1,0 +1,94 @@
+input[type=text],textarea,input[type=password],input[type=email]{
+   padding: 6px 12px;
+   min-width: 250px;
+   font-size: 0.9rem;
+   border: 1px solid black;
+   background: transparent;
+   transition: all 0.2s;
+
+   &:focus{
+      background: white;
+      outline-style:outset;
+      outline-width: 1px;
+      outline-color: rgba(0, 0, 0, 0.2);
+   }
+}
+
+button[type=submit]{
+   background-color: $blue;
+   color:white;
+   text-transform: uppercase;
+   padding: 6px 12px;
+   border: none;
+   border-radius: 4px;
+   &:hover{
+      cursor:pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.7);
+   }
+}
+
+label{
+   display: block;
+   margin-bottom: 10px;
+   font-family: georgia;
+}
+
+.form-group{
+   display: block;
+   margin-bottom: 20px;
+   .ng-touched.ng-invalid{
+      border: 1px solid red;
+   }
+   .ng-touched.ng-valid{
+      border: 1px solid $action;
+   }
+}
+
+textarea{
+   height: 80px;
+}
+
+// CSS for dropdown-solution with tags
+.choices{
+   overflow-y: scroll;
+   max-height: 160px;
+   width: 250px;
+   padding: 6px 12px;
+   background:white;
+   border:1px solid black;
+   position: absolute;
+
+   ul{
+      overflow: hidden;
+
+   }
+   .tag{
+      font-family: helvetica;
+      font-size: 0.9rem;
+      padding: 2px 4px;
+      cursor: pointer;
+      &:hover{
+         background-color: $action;
+      }
+   }
+}
+
+.tagChoices{
+   display: inline-block;
+   li{
+      display: block;
+      margin: 0px 10px 20px 0px;
+      background-color: $yellow;
+      color:black;
+      padding: 6px 12px;
+      font-family:$exo;
+      border-radius: 4px;
+      &:hover{
+         box-shadow: 0 0 5px rgba(0,0,0,0.7);
+         cursor:pointer;
+      }
+      i{
+         margin-left:5px;
+      }
+   }
+}
