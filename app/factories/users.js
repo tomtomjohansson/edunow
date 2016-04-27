@@ -18,9 +18,8 @@ const authFactory = angular.module('companyApp.auth', [])
    auth.isLoggedIn = ()=>{
       let token = auth.getToken();
       if(token){
-         // let payload = JSON.parse($window.atob(token.split('.')[1]));
-         // return payload.exp > Date.now() / 1000;
-         return true;
+         let payload = JSON.parse($window.atob(token.split('.')[1]));
+         return payload.exp > Date.now() / 1000;
       }
       else{
          return false;
@@ -35,13 +34,13 @@ const authFactory = angular.module('companyApp.auth', [])
    };
 
    auth.register = (user)=>{
-      return $http.post('/api/register', user).success((data)=>{
+      return $http.post('/api/user/register', user).success((data)=>{
          auth.saveToken(data);
       });
    };
 
    auth.logIn = (user)=>{
-      return $http.post('/api/login', user).success((data)=>{
+      return $http.post('/api/user/login', user).success((data)=>{
          auth.saveToken(data);
       });
    };

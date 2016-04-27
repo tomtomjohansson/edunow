@@ -9,8 +9,20 @@ $off-black: #373737;
 // fonts
 $exo: 'Exo', sans-serif;
 
+// stuff
+$shadow: 0 0 5px rgba(0,0,0,0.7);
+
+// mixins
+@mixin medium{
+   @media screen and (max-width: 780px) {
+   @content;
+  }
+}
+
 @import 'nav';
 @import 'inputs';
+@import 'searches';
+@import 'medias';
 
 :root{
    font-size: 16px;
@@ -21,25 +33,70 @@ $exo: 'Exo', sans-serif;
    margin:0px;
 }
 
-body{
-   width:100%;
+html,body{
    height: 100%;
    background-color: $light-grey;
 }
 
+#wrapper{
+   height:auto;
+   min-height: 100%;
+   margin-bottom:-140px;
+   &:after{
+      content: "";
+      display: block;
+      height:150px;
+   }
+}
+
+footer {
+   height: 120px;
+   background-color: $off-black;
+   color:white;
+   padding: 10px;
+}
+
 .container{
    width: 990px;
-   max-width: 96%;
+   max-width: 100%;
    margin:0 auto;
+   position:relative;
+}
+
+.centre{
+   padding: 20px 20px;
+   margin: 20px auto 30px auto;
+   box-shadow: $shadow;
+   @include medium {
+    max-width: 82%;
+  }
+}
+
+.smaller{
+   width: 600px;
+}
+
+.text-centre{
+   text-align: center;
+}
+
+.ui-back{
+   background-color: white;
 }
 
 h1,h2,h3,h4{
    font-family: 'Exo', sans-serif;
+   // font-weight: 800;
    color:$off-black;
+}
+
+h2{
+   margin-bottom: 10px;
 }
 
 a{
    text-decoration: none;
+   font-family: helvetica;
    color:$blue;
 }
 
@@ -58,7 +115,6 @@ ul{
    a{
       width:100%;
       display: inline-block;
-      font-family: helvetica;
       text-transform: uppercase;
       text-align: right;
       color:$medium-grey;

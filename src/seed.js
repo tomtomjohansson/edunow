@@ -90,6 +90,7 @@ tomas.usertype = 'student';
 tomas.specialties = ['JavaScript','AngularJS','SASS','Node.js','MongoDB','jQuery'];
 tomas.school = 'JENSEN Education';
 tomas.semesters = {current:2,total:4};
+tomas.points = 240;
 tomas.setPassword('tomjoh');
 
 var david = new User();
@@ -101,6 +102,7 @@ david.usertype = 'student';
 david.specialties = ['JavaScript','Java','PHP','Perl','MongoDB','Node.js','noSQL','Wordpress','jQuery'];
 david.school = 'YRGO';
 david.semesters = {current:4,total:4};
+david.points = 740;
 david.setPassword('davhav');
 
 var mikael = new User();
@@ -112,6 +114,7 @@ mikael.usertype = 'student';
 mikael.specialties = ['JavaScript','Java','Ruby','ReactJS','AngularJS','Node.js','Swift','Wordpress'];
 mikael.school = 'YRGO';
 mikael.semesters = {current:5,total:4};
+david.points = 440;
 mikael.setPassword('mikber');
 
 var johnny = new User();
@@ -122,7 +125,8 @@ johnny.name = "Johnny Hansson";
 johnny.usertype = 'student';
 johnny.specialties = ['Java','Swift','SQL','Redis','Ruby','PHP','Gulp','Wordpress','jQuery'];
 johnny.school = 'YRGO';
-johnny.semesters = {current:5,total:4};
+johnny.semesters = {current:3,total:4};
+johnny.points = 163;
 johnny.setPassword('mikber');
 
 var conny = new User();
@@ -134,6 +138,7 @@ conny.usertype = 'student';
 conny.specialties = ['Java','JavaScript','SQL','noSQL','Perl','PHP','Grunt','SASS','jQuery'];
 conny.school = 'Jensen Education';
 conny.semesters = {current:1,total:4};
+conny.points = 45;
 conny.setPassword('conban');
 
 var donny = new User();
@@ -144,7 +149,8 @@ donny.name = "Donny Darkman";
 donny.usertype = 'student';
 donny.specialties = ['Grunt','JavaScript','SQL','noSQL','jQuery','Java','Gulp','HTML5'];
 donny.school = 'Jensen Education';
-donny.semesters = {current:1,total:4};
+donny.semesters = {current:4,total:4};
+donny.points = 671;
 donny.setPassword('conban');
 
 let users = [tomas,david,mikael,johnny,conny,donny];

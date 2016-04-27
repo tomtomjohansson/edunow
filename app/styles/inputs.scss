@@ -1,10 +1,11 @@
 input[type=text],textarea,input[type=password],input[type=email]{
-   padding: 6px 12px;
-   min-width: 250px;
+   padding: 12px 12px;
+   // max-width: 250px;
    font-size: 0.9rem;
    border: 1px solid black;
    background: transparent;
    transition: all 0.2s;
+   width:240px;
 
    &:focus{
       background: white;
@@ -12,6 +13,10 @@ input[type=text],textarea,input[type=password],input[type=email]{
       outline-width: 1px;
       outline-color: rgba(0, 0, 0, 0.2);
    }
+}
+
+input[type=radio]{
+   display: inline;
 }
 
 button[type=submit]{
@@ -23,7 +28,7 @@ button[type=submit]{
    border-radius: 4px;
    &:hover{
       cursor:pointer;
-      box-shadow: 0 0 5px rgba(0,0,0,0.7);
+      box-shadow: $shadow;
    }
 }
 
@@ -52,7 +57,7 @@ textarea{
 .choices{
    overflow-y: scroll;
    max-height: 160px;
-   width: 250px;
+   width: 240px;
    padding: 6px 12px;
    background:white;
    border:1px solid black;
@@ -84,7 +89,7 @@ textarea{
       font-family:$exo;
       border-radius: 4px;
       &:hover{
-         box-shadow: 0 0 5px rgba(0,0,0,0.7);
+         box-shadow: $shadow;
          cursor:pointer;
       }
       i{

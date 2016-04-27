@@ -4,6 +4,7 @@ const app = express();
 const path = require('path');
 const parser = require('body-parser');
 const router = require('./src/api');
+const login = require('./src/api/users');
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(parser.json());
 app.use(passport.initialize());
 app.use('/api', router);
+app.use('/api/user', login);
 
 app.get('/*', (req, res,next)=>{
    res.sendFile(path.join(__dirname, 'public/index.html'));

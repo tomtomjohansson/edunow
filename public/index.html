@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>A MEAN Platform</title>
    <link rel="stylesheet" href="/stylesheets/style.css">
    <link href='https://fonts.googleapis.com/css?family=Exo:400,800,600italic' rel='stylesheet' type='text/css'>
@@ -9,20 +10,25 @@
    <base href="/">
 </head>
 <body ng-cloak>
-   <div id="navheader" ng-controller="navCtrl">
-      <header>
-         <div id="loginHeader">
-            <a ui-sref="login">Logga in/Registrera</a>
-         </div>
-         <div class="logoHeader">
-            <h1>edu<span>N</span>ow</h1>
-         </div>
-      </header>
-      <navigation></navigation>
+   <div id="wrapper">
+      <div id="navheader" ng-controller="navCtrl">
+         <header>
+            <div id="loginHeader">
+               <a ui-sref="login">Logga in/Registrera</a>
+            </div>
+            <div class="logoHeader">
+               <h1>edu<span>N</span>ow</h1>
+            </div>
+         </header>
+         <navigation></navigation>
+      </div>
+      <div class="animation">
+         <div class="container" ui-view></div>
+      </div>
    </div>
-   <div class="animation">
-   <div class="container" ui-view></div>
-   </div>
+   <footer class="text-centre">
+      <p>Tomas har gjort den här sidan</p>
+   </footer>
    <script src="bundle.js"></script>
    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 </body>

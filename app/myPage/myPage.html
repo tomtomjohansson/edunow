@@ -1,0 +1,11 @@
+<div ng-if="!user">
+   <p>Du är inte inloggad</p>
+</div>
+
+<div ng-if="user.usertype === 'student'">
+   <h1>Hej {{user.name}}!</h1>
+</div>
+
+<div ng-if="user.usertype === 'company'">
+   <h1>Du är inloggad som {{user.name}}!</h1>
+</div>
