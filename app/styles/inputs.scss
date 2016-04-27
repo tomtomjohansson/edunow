@@ -1,25 +1,23 @@
 input[type=text],textarea,input[type=password],input[type=email]{
    padding: 12px 12px;
-   // max-width: 250px;
+   min-width: 250px;
    font-size: 0.9rem;
    border: 1px solid black;
    background: transparent;
-   transition: all 0.2s;
-   width:240px;
 
    &:focus{
       background: white;
-      outline-style:outset;
+      outline-style:inset;
       outline-width: 1px;
       outline-color: rgba(0, 0, 0, 0.2);
    }
 }
 
-input[type=radio]{
+input[type=radio],input[type=checkbox]{
    display: inline;
 }
 
-button[type=submit]{
+button{
    background-color: $blue;
    color:white;
    text-transform: uppercase;
@@ -32,10 +30,19 @@ button[type=submit]{
    }
 }
 
+button[disabled]{
+   background-color: $medium-grey;
+   color: $light-grey;
+   &:hover{
+      cursor: default;
+      box-shadow: none;
+   }
+}
+
 label{
    display: block;
    margin-bottom: 10px;
-   font-family: georgia;
+   font-family: helvetica;
 }
 
 .form-group{
@@ -54,36 +61,42 @@ textarea{
 }
 
 // CSS for dropdown-solution with tags
-.choices{
-   overflow-y: scroll;
-   max-height: 160px;
-   width: 240px;
-   padding: 6px 12px;
-   background:white;
-   border:1px solid black;
-   position: absolute;
+.tag-box{
+   display: inline;
+   position: relative;
+   margin-bottom:10px;
+   .choices{
+      overflow-y: scroll;
+      max-height: 160px;
+      padding: 6px 12px;
+      background:white;
+      border:1px solid black;
+      position: absolute;
+      box-sizing: border-box;
+      width:100%;
+      top:10;
+      left:0;
 
-   ul{
-      overflow: hidden;
-
-   }
-   .tag{
-      font-family: helvetica;
-      font-size: 0.9rem;
-      padding: 2px 4px;
-      cursor: pointer;
-      &:hover{
-         background-color: $action;
+      ul{
+         overflow: hidden;
+      }
+      .tag{
+         font-family: helvetica;
+         font-size: 0.9rem;
+         padding: 2px 4px;
+         cursor: pointer;
+         &:hover{
+            background-color: $action;
+         }
       }
    }
 }
 
 .tagChoices{
-   display: inline-block;
+   display: block;
    li{
-      display: block;
-      margin: 0px 10px 20px 0px;
-      background-color: $yellow;
+      display: inline-block;
+      margin: 0px 10px 10px 0px;
       color:black;
       padding: 6px 12px;
       font-family:$exo;
@@ -95,5 +108,12 @@ textarea{
       i{
          margin-left:5px;
       }
+   }
+   .yellow{
+      background-color: $yellow;
+   }
+   .black{
+      background-color: $off-black;
+      color:white;
    }
 }

@@ -34,13 +34,13 @@ const authFactory = angular.module('companyApp.auth', [])
    };
 
    auth.register = (user)=>{
-      return $http.post('/api/user/register', user).success((data)=>{
+      return $http.post('/api/authenticate/register', user).success((data)=>{
          auth.saveToken(data);
       });
    };
 
    auth.logIn = (user)=>{
-      return $http.post('/api/user/login', user).success((data)=>{
+      return $http.post('/api/authenticate/login', user).success((data)=>{
          auth.saveToken(data);
       });
    };

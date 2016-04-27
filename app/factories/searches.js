@@ -5,21 +5,16 @@ const searchFactory = angular.module('companyApp.search', [])
 .factory('search', ['$http', '$window', ($http, $window)=>{
    let search = {};
 
-   search.saveToken = (data)=>{
-      $window.localStorage['user-token'] = data.token;
-      $window.localStorage.user = JSON.stringify(data.user);
+   search.allStudents = ()=>{
+      return $http.get('/api/students');
    };
 
-   search.register = (user)=>{
-      return $http.post('/api/user/register', user).success((data)=>{
-         search.saveToken(data);
-      });
-   };
-
-   search.logIn = (user)=>{
-      return $http.post('/api/user/login', user).success((data)=>{
-         search.saveToken(data);
-      });
+   search.addAsInteresting = (added,user)=>{
+      var adding = {
+         added:added,
+         user:user
+      };
+      return $http.put('/api/interesting',adding);
    };
 
 

@@ -20,12 +20,42 @@
 }
 
 #searches{
-   text-align: center;
-   input{
-      margin-right:10px;
-      width:28%;
+   .search-boxes{
+      text-align: left;
+      margin-bottom: 15px;
       @include medium {
-         width:90%;
+         text-align: left;
+         margin-bottom:0px;
+      }
+   }
+   input.right{
+      margin-right:12px;
+   }
+   input[type="text"]{
+      width:29%;
+
+      @include medium {
+         width:92%;
+         margin:0px 0px 15px 0px;
+         text-align: left;
+      }
+   }
+   .choices{
+      @include medium {
+         margin-top:-15px;
+      }
+   }
+   i{
+      margin-left:10px;
+   }
+}
+
+.results{
+   margin-top:20px;
+   .result{
+      padding: 6px 12px;
+      &:nth-child(odd){
+         background-color:$yellow;
       }
    }
 }

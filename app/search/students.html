@@ -3,11 +3,35 @@
    <a ui-sref="companies">Sök på företag</a>
 </div>
 
-<div id="searches" class="centre ui-back">
-   <input type="text" placeholder="Frisök">
-   <input type="text" placeholder="Sök på skola">
-   <input type="text">
-
-   
-
+<div id="searches" class="ui-back centre">
+   <form ng-submit="searchStudents()">
+      <div class="search-boxes">
+         <input ng-model="search.name" class="right" type="text" placeholder="Frisök">
+         <input ng-model="search.school" class="right" type="text" placeholder="Sök på skola">
+         <div class="tag-box">
+            <input ng-model="searching" ng-focus="choices=true" type="text" placeholder="taggar">
+            <div class="choices" ng-show="choices">
+               <ul class="listChoices">
+                  <li  ng-repeat="tech in technologies | orderBy:tech | filter:searching:strict" ng-click="addTag(tech)" class="tag">{{tech}}</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <ul class="tagChoices">
+         <li  ng-repeat="choice in user.specialties" class="yellow">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
+      </ul>
+      <p><label><input type="checkbox"><i class="fa fa-hourglass-end" aria-hidden="true"></i> Sista terminen</label></p>
+      <p><label><input type="checkbox"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Slutfört utbildning</label></p>
+      <button type="submit" class="submitter">Sök</button>
+   </form>
+   <div class="results">
+      <div class="result" ng-repeat="result in results | filter:search">
+         <p>{{result.name}}</p>
+         <p>{{result.points}}</p>
+         <ul class="tagChoices" >
+            <li ng-repeat="tag in result.specialties" class="black">{{tag}}</li>
+         </ul>
+         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant</button>
+      </div>
+   </div>
 </div>

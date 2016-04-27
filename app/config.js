@@ -2,13 +2,15 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import auth from 'factories/users';
+import search from 'factories/searches';
 import AuthCtrl from 'login/authenticate.js';
 import HomeCtrl from 'home/home.js';
 import navCtrl from 'navigation/navigation.js';
 import navDir from 'navigation/navDirective.js';
 import myCtrl from 'myPage/myPage.js';
+import SearchCtrl from 'search/search.js';
 
-const app = angular.module('companyApp', [uiRouter,ngAnimate,auth.name,AuthCtrl.name,HomeCtrl.name,navCtrl.name,navDir.name,myCtrl.name]);
+const app = angular.module('companyApp', [uiRouter,ngAnimate,auth.name,search.name,AuthCtrl.name,HomeCtrl.name,navCtrl.name,navDir.name,myCtrl.name,SearchCtrl.name]);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
    // $urlRouterProvider.otherwise('/');
@@ -20,11 +22,13 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
       })
       .state('students',{
          url: '/students',
-         template: require('search/students.html')
+         template: require('search/students.html'),
+         controller: 'SearchCtrl',
       })
       .state('companies',{
          url: '/companies',
-         template: require('search/companies.html')
+         template: require('search/companies.html'),
+         controller: 'SearchCtrl',
       })
       .state('myPage',{
          url: '/minsida',
