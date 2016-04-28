@@ -25,7 +25,7 @@
       <p><label><input ng-model="lastTerm" type="checkbox"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Slutfört utbildning</label></p>
       <button type="submit" class="submitter">Sök</button>
    </form>
-   <p>Du har {{filtered.length}} träffar.</p>
+   <p>Din sökning fick {{filtered.length}} träffar.</p>
    <div class="results">
       <div class="result" ng-repeat="result in results | filter:myStudentFilter as filtered">
          <p>{{result.name}}</p>
@@ -33,7 +33,7 @@
          <ul class="tagChoices" >
             <li ng-repeat="tag in result.specialties" class="black">{{tag}}</li>
          </ul>
-         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant <i class="fa fa-plus-circle" aria-hidden="true"></i>
+         <button ng-disabled="!isLoggedIn || result.isInteresting" ng-click="addAsInteresting(result.username)" ng-class="{alert:!result.isInteresting}">Intressant <i class="fa fa-plus-circle" aria-hidden="true"></i>
 </button>
       </div>
    </div>

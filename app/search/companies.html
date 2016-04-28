@@ -27,7 +27,7 @@
  Samarbetar om projekt</label></p>
       <button type="submit" class="submitter">Sök</button>
    </form>
-         <p>Du har {{filtered.length}} träffar.</p>
+         <p>Din sökning fick {{filtered.length}} träffar.</p>
    <div class="results">
       <div class="result" ng-repeat="result in results | filter:myCompanyFilter as filtered">
          <p>{{result.name}}</p>

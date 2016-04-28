@@ -28,6 +28,9 @@ button{
       cursor:pointer;
       box-shadow: $shadow;
    }
+   i{
+      margin-left: 5px;
+   }
 }
 
 button[disabled]{

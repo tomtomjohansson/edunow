@@ -3,8 +3,9 @@ import angular from 'angular';
 
 const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
 .controller('SearchCtrl',($scope, $state, $window ,auth, search)=>{
-   $scope.user = {
-   };
+   $scope.user = {};
+   $scope.theUser = auth.currentUser();
+   $scope.isLoggedIn = auth.isLoggedIn();
 
    $scope.technologies = ['JavaScript','Python','Ruby','SQL','noSQL','MongoDB','Node.js','C#','C++','PostgreSQL', 'Grunt','Gulp','Git','HTML5','SASS','LESS','jQuery','PHP','Laravel','Perl','Wordpress','Redis','Oracle',
    'Scala','.NET','Android','AngularJS','ReactJS','Bootstrap','Drupal','Django','Java','Swift'];
@@ -85,17 +86,25 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       $scope.technologies.push(choice);
    };
 
-   $scope.loggedIn = auth.currentUser();
-   $scope.isLoggedIn = auth.isLoggedIn();
+
 
    if($state.is('students')){
       search.allStudents().success((response)=>{
          $scope.results = response.users;
+         $scope.results.forEach((x)=>{
+            if($scope.theUser.interesting.indexOf(x.username)>=0){
+               x.isInteresting = true;
+            }
+            else{
+               x.isInteresting = false;
+            }
+         });
       });
    }
    else{
       search.allCompanies().success((response)=>{
          $scope.results = response.users;
+
       });
    }
 
@@ -103,7 +112,7 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
 
    $scope.addAsInteresting = (username)=>{
       console.log('adding interesting user');
-      search.addAsInteresting(username,$scope.loggedIn.username);
+      search.addAsInteresting(username,$scope.theUser.username);
    };
 
 });

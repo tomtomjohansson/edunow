@@ -14,16 +14,28 @@ const searchFactory = angular.module('companyApp.search', [])
    };
 
    search.addAsInteresting = (added,user)=>{
-      let adding = {
-         added:added,
-         user:user
+      let interest = {
+         interesting:added,
+         user:user,
+         change: 'Add'
       };
-      return $http.put('/api/interesting',adding);
+      return $http.put('/api/interesting',interest);
+   };
+
+   search.removeInterest = (removed,user)=>{
+      let interest = {
+         interesting:removed,
+         user:user,
+         change: 'Remove'
+      };
+      return $http.put('/api/interesting',interest);
    };
 
    search.getMyPage = (user)=>{
       return $http.post('/api/mypage',user);
    };
+
+
 
 
    return search;

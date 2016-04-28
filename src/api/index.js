@@ -4,7 +4,8 @@ const router = express.Router();
 const User = require('../models/users');
 
 router.get('/students',(req,res,next)=>{
-   User.find({usertype:"student"},(err,users)=>{
+   let queries = User.find({usertype:"student"});
+   queries.exec((err,users)=>{
       if(err){
          return res.status(500).json({message: err.message});
       }
@@ -26,20 +27,27 @@ router.get('/companies',(req,res,next)=>{
 });
 
 router.put('/interesting',(req,res,next)=>{
-   console.log(req.body);
-   User.findOneAndUpdate({username:req.body.user},{$push:{interesting:req.body.added}},{new:true},(err,user)=>{
+   let condition = {username:req.body.user};
+   let update;
+   let option = {new:true};
+   if(req.body.change === 'Add'){
+      update = {$push:{interesting:req.body.interesting}};
+   }
+   else if(req.body.change === 'Remove'){
+      update = {$pull:{interesting:req.body.interesting}};
+   }
+   User.findOneAndUpdate(condition,update,option,(err,user)=>{
       if(err){
          return res.status(500).json({message: err.message});
       }
       else{
-         console.log(user);
-         res.json({user:user,message:"Added as interesting"});
+         res.json({user:user,message:"Din lista med intressanta användare uppdaterades."});
       }
    });
 });
 
 router.post('/mypage',(req,res,next)=>{
-   console.log(req.body);
+   // console.log(req.body);
    User.findOne({username:req.body.username},(err,user)=>{
       if(err){
          return res.status(500).json({message: err.message});

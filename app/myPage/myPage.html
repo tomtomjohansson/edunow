@@ -10,7 +10,6 @@
 
    <div ng-if="user.usertype === 'company'">
       <h1>Du är inloggad som {{theUser.name}}!</h1>
-      <p>{{theUser.projects}}</p>
       <h3>Användare du markerat som intressanta</h3>
       <div class="results">
          <div class="result" ng-repeat="interest in interests">
@@ -20,6 +19,7 @@
                <li ng-repeat="tag in interest.specialties" class="black">{{tag}}</li>
             </ul>
             <!-- <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant</button> -->
+            <button class="alert"  ng-click="removeInterest(interest)">Ta bort<i class="fa fa-times-circle" aria-hidden="true"></i></button>
          </div>
       </div>
    </div>

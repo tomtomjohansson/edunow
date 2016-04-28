@@ -3,7 +3,7 @@ import angular from 'angular';
 
 const myCtrl = angular.module('companyApp.myCtrl',[])
 .controller('myCtrl',($scope, $state, $window ,auth, search)=>{
-   if(auth.currentUser()){
+   if(auth.isLoggedIn()){
       $scope.user = auth.currentUser();
    }
    if($scope.user){
@@ -12,6 +12,14 @@ const myCtrl = angular.module('companyApp.myCtrl',[])
          $scope.interests = response.interests;
       });
    }
+
+   $scope.removeInterest = (user)=>{
+      search.removeInterest(user.username,$scope.theUser.username).success((response)=>{
+         console.log(response.message);
+         console.log(response.user);
+         $scope.interests.splice($scope.interests.indexOf(user),1);
+      });
+   };
 
 });
 
