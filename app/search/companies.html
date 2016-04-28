@@ -2,3 +2,41 @@
    <a ui-sref="students">Sök på studenter</a>
    <a id="current-search" ui-sref="companies">Sök på företag</a>
 </div>
+
+<div id="searches" class="ui-back centre">
+   <form ng-submit="searchCompanies()">
+      <div class="search-boxes">
+         <input ng-model="search" class="right" type="text" placeholder="Frisök">
+         <input ng-model="name" class="right" type="text" placeholder="Sök på företagsnamn">
+         <div class="tag-box">
+            <input ng-model="searching" ng-focus="choices=true" type="text" placeholder="taggar">
+            <div class="choices" ng-show="choices">
+               <ul class="listChoices">
+                  <li  ng-repeat="tech in technologies | orderBy:tech | filter:searching:strict" ng-click="addTag(tech)" class="tag">{{tech}}</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <ul class="tagChoices">
+         <li  ng-repeat="choice in user.specialties" class="yellow">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
+      </ul>
+      <p><label><input ng-model="matchAll" type="checkbox"><i class="fa fa-bullseye" aria-hidden="true"></i> Matcha alla taggarna</label></p>
+      <p><label><input ng-model="intern" type="checkbox"><i class="fa fa-suitcase" aria-hidden="true"></i>
+ Tar emot praktikanter</label></p>
+      <p><label><input ng-model="project" type="checkbox"><i class="fa fa-exchange" aria-hidden="true"></i>
+ Samarbetar om projekt</label></p>
+      <button type="submit" class="submitter">Sök</button>
+   </form>
+         <p>Du har {{filtered.length}} träffar.</p>
+   <div class="results">
+      <div class="result" ng-repeat="result in results | filter:myCompanyFilter as filtered">
+         <p>{{result.name}}</p>
+         <p>{{result.contact}}</p>
+         <ul class="tagChoices" >
+            <li ng-repeat="tag in result.specialties" class="black">{{tag}}</li>
+         </ul>
+         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</button>
+      </div>
+   </div>
+</div>

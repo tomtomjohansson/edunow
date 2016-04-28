@@ -1,11 +1,26 @@
-<div ng-if="!user">
-   <p>Du är inte inloggad</p>
-</div>
+<div id="mypage" class="ui-back centre">
 
-<div ng-if="user.usertype === 'student'">
-   <h1>Hej {{user.name}}!</h1>
-</div>
+   <div ng-if="!user">
+      <p>Du måste <a ui-sref="login">logga in</a> för att kunna se din sida!</p>
+   </div>
 
-<div ng-if="user.usertype === 'company'">
-   <h1>Du är inloggad som {{user.name}}!</h1>
+   <div ng-if="user.usertype === 'student'">
+      <h1>Hej {{user.name}}!</h1>
+   </div>
+
+   <div ng-if="user.usertype === 'company'">
+      <h1>Du är inloggad som {{theUser.name}}!</h1>
+      <p>{{theUser.projects}}</p>
+      <h3>Användare du markerat som intressanta</h3>
+      <div class="results">
+         <div class="result" ng-repeat="interest in interests">
+            <p>{{interest.name}}</p>
+            <p>{{interest.points}}</p>
+            <ul class="tagChoices" >
+               <li ng-repeat="tag in interest.specialties" class="black">{{tag}}</li>
+            </ul>
+            <!-- <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant</button> -->
+         </div>
+      </div>
+   </div>
 </div>

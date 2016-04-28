@@ -6,8 +6,8 @@
 <div id="searches" class="ui-back centre">
    <form ng-submit="searchStudents()">
       <div class="search-boxes">
-         <input ng-model="search.name" class="right" type="text" placeholder="Frisök">
-         <input ng-model="search.school" class="right" type="text" placeholder="Sök på skola">
+         <input ng-model="search" class="right" type="text" placeholder="Frisök">
+         <input ng-model="school" class="right" type="text" placeholder="Sök på skola">
          <div class="tag-box">
             <input ng-model="searching" ng-focus="choices=true" type="text" placeholder="taggar">
             <div class="choices" ng-show="choices">
@@ -20,18 +20,21 @@
       <ul class="tagChoices">
          <li  ng-repeat="choice in user.specialties" class="yellow">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
       </ul>
-      <p><label><input type="checkbox"><i class="fa fa-hourglass-end" aria-hidden="true"></i> Sista terminen</label></p>
-      <p><label><input type="checkbox"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Slutfört utbildning</label></p>
+      <p><label><input ng-model="matchAll" type="checkbox"><i class="fa fa-bullseye" aria-hidden="true"></i> Matcha alla taggarna</label></p>
+      <p><label><input ng-model="student" type="checkbox"><i class="fa fa-hourglass-end" aria-hidden="true"></i> Sista terminen</label></p>
+      <p><label><input ng-model="lastTerm" type="checkbox"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Slutfört utbildning</label></p>
       <button type="submit" class="submitter">Sök</button>
    </form>
+   <p>Du har {{filtered.length}} träffar.</p>
    <div class="results">
-      <div class="result" ng-repeat="result in results | filter:search">
+      <div class="result" ng-repeat="result in results | filter:myStudentFilter as filtered">
          <p>{{result.name}}</p>
          <p>{{result.points}}</p>
          <ul class="tagChoices" >
             <li ng-repeat="tag in result.specialties" class="black">{{tag}}</li>
          </ul>
-         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant</button>
+         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</button>
       </div>
    </div>
 </div>

@@ -5,7 +5,7 @@ const AuthCtrl = angular.module('companyApp.AuthCtrl',[])
 .controller('AuthCtrl',($scope, $state, $window ,auth)=>{
    $scope.user = {};
 
-   $scope.technologies = ['Javascript','Python','Ruby','SQL','noSQL','MongoDB','Node.js','C#','C++','PostgreSQL', 'Grunt','Gulp','Git','HTML5','SASS','LESS','jQuery','PHP','Laravel','Perl','Wordpress','Redis','Oracle',
+   $scope.technologies = ['JavaScript','Python','Ruby','SQL','noSQL','MongoDB','Node.js','C#','C++','PostgreSQL', 'Grunt','Gulp','Git','HTML5','SASS','LESS','jQuery','PHP','Laravel','Perl','Wordpress','Redis','Oracle',
    'Scala','.NET','Android','AngularJS','ReactJS','Bootstrap','Drupal','Django','Java','Swift'];
 
    $scope.step1 = true;
@@ -44,7 +44,7 @@ const AuthCtrl = angular.module('companyApp.AuthCtrl',[])
       auth.logIn($scope.user).error((error)=>{
          $scope.error = error;
       }).then(()=>{
-            $state.go('home');
+            $state.go('myPage');
       });
    };
    $scope.logOut = ()=>{

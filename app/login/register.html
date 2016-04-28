@@ -5,7 +5,7 @@
 
    <form ng-submit="register()">
       <div ng-show="step1">
-      <h2>Registrering - steg 1</h2>
+      <h2>Registrering - steg 1 {{test}}</h2>
       <div class="form-group">
          <input required type="text" class="form-control" placeholder="Användarnamn" ng-model="user.username"/>
       </div>
@@ -46,7 +46,7 @@
          </div>
       </div>
       <ul class="tagChoices">
-         <li  ng-repeat="choice in user.specialties" class="chosenTag">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
+         <li  ng-repeat="choice in user.specialties" class="chosenTag yellow">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
       </ul>
       <br>
       <button type="submit" class="submitter">Registrera</button>

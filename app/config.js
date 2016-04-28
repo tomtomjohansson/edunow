@@ -55,7 +55,7 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
          onEnter: ['$state','$window','$timeout',($state, $window, $timeout)=>{
             $timeout(()=>{
                if($window.localStorage['user-token']){
-                  $state.go('home');
+                  $state.go('myPage');
                }
             },0);
          }]

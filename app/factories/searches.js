@@ -9,12 +9,20 @@ const searchFactory = angular.module('companyApp.search', [])
       return $http.get('/api/students');
    };
 
+   search.allCompanies = ()=>{
+      return $http.get('/api/companies');
+   };
+
    search.addAsInteresting = (added,user)=>{
-      var adding = {
+      let adding = {
          added:added,
          user:user
       };
       return $http.put('/api/interesting',adding);
+   };
+
+   search.getMyPage = (user)=>{
+      return $http.post('/api/mypage',user);
    };
 
 
