@@ -5,13 +5,13 @@ const searchFactory = angular.module('companyApp.search', [])
 .factory('search', ['$http', '$window', ($http, $window)=>{
    let search = {};
 
-   search.allStudents = ()=>{
-      return $http.get('/api/students');
+   search.allUsers = ()=>{
+      return $http.get('/api/users');
    };
 
-   search.allCompanies = ()=>{
-      return $http.get('/api/companies');
-   };
+   // search.allCompanies = ()=>{
+   //    return $http.get('/api/companies');
+   // };
 
    search.addAsInteresting = (added,user)=>{
       let interest = {

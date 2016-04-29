@@ -3,14 +3,16 @@ import angular from 'angular';
 
 const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
 .controller('SearchCtrl',($scope, $state, $window ,auth, search)=>{
-   $scope.user = {};
-   $scope.theUser = auth.currentUser();
+
+   let passOn;
    $scope.isLoggedIn = auth.isLoggedIn();
 
    $scope.technologies = ['JavaScript','Python','Ruby','SQL','noSQL','MongoDB','Node.js','C#','C++','PostgreSQL', 'Grunt','Gulp','Git','HTML5','SASS','LESS','jQuery','PHP','Laravel','Perl','Wordpress','Redis','Oracle',
    'Scala','.NET','Android','AngularJS','ReactJS','Bootstrap','Drupal','Django','Java','Swift'];
    $scope.choices = false;
 
+
+   $scope.user = {};
    $scope.addTag = (tag)=>{
       $scope.choices = false;
       $scope.searching = "";
@@ -23,6 +25,11 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
          $scope.user.specialties.unshift(tag);
          $scope.technologies.splice($scope.technologies.indexOf(tag),1);
       }
+   };
+
+   $scope.removeChoice = (choice)=>{
+      $scope.user.specialties.splice($scope.user.specialties.indexOf(choice),1);
+      $scope.technologies.push(choice);
    };
 
    function checkSpecialties(thing){
@@ -81,38 +88,33 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    };
 
-   $scope.removeChoice = (choice)=>{
-      $scope.user.specialties.splice($scope.user.specialties.indexOf(choice),1);
-      $scope.technologies.push(choice);
-   };
-
-
-
-   if($state.is('students')){
-      search.allStudents().success((response)=>{
-         $scope.results = response.users;
+   search.allUsers().success((response)=>{
+      $scope.allUsers = response.users;
+      if($state.is('students')){
+         $scope.results = response.students;
+      }
+      else if($state.is('companies')){
+         $scope.results = response.companies;
+      }
+      if($scope.isLoggedIn){
+         passOn = auth.currentUser();
+         $scope.currentUser = $scope.allUsers.find((x)=>{
+            return x.username === passOn.username;
+         });
          $scope.results.forEach((x)=>{
-            if($scope.theUser.interesting.indexOf(x.username)>=0){
+            if($scope.currentUser.interesting.indexOf(x.username)>=0){
                x.isInteresting = true;
             }
             else{
                x.isInteresting = false;
             }
          });
-      });
-   }
-   else{
-      search.allCompanies().success((response)=>{
-         $scope.results = response.users;
-
-      });
-   }
-
-
+      }
+   });
 
    $scope.addAsInteresting = (username)=>{
       console.log('adding interesting user');
-      search.addAsInteresting(username,$scope.theUser.username);
+      search.addAsInteresting(username,$scope.currentUser.username);
    };
 
 });

@@ -4,6 +4,7 @@ $medium-grey:#757575;
 $action: #2DB8E6;
 $yellow: #F6CC4C;
 $blue: #4C69F6;
+$green: #4EDA44;
 $soft-red: #F75E2F;
 $off-black: #373737;
 
@@ -92,6 +93,18 @@ footer {
    background-color:$soft-red;
 }
 
+.action{
+   background-color: $blue;
+}
+
+.action-text{
+   color: $blue;
+}
+
+.adding{
+   background-color: $green;
+}
+
 h1,h2,h3,h4{
    font-family: 'Exo', sans-serif;
    // font-weight: 800;
@@ -112,9 +125,7 @@ ul{
    list-style-type: none;
 }
 
-.action{
-   color:$blue;
-}
+
 
 #loginHeader{
    background-color: $light-grey;

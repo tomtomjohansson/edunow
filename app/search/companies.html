@@ -25,17 +25,17 @@
  Tar emot praktikanter</label></p>
       <p><label><input ng-model="project" type="checkbox"><i class="fa fa-exchange" aria-hidden="true"></i>
  Samarbetar om projekt</label></p>
-      <button type="submit" class="submitter">Sök</button>
+      <button class="action" type="submit" class="submitter">Sök</button>
    </form>
          <p>Din sökning fick {{filtered.length}} träffar.</p>
    <div class="results">
       <div class="result" ng-repeat="result in results | filter:myCompanyFilter as filtered">
          <p>{{result.name}}</p>
          <p>{{result.contact}}</p>
+         <button ng-disabled="!isLoggedIn || result.isInteresting" ng-click="addAsInteresting(result.username);result.isInteresting=true;" ng-class="{adding:!result.isInteresting,isAdded:result.isInteresting}">Lägg till<i class="fa" ng-class="{'fa-plus-circle':!result.isInteresting, 'fa-check-circle-o' :result.isInteresting}" aria-hidden="true"></i></button>
          <ul class="tagChoices" >
             <li ng-repeat="tag in result.specialties" class="black">{{tag}}</li>
          </ul>
-         <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant <i class="fa fa-plus-circle" aria-hidden="true"></i>
 </button>
       </div>
    </div>

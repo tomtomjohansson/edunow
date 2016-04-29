@@ -55,7 +55,7 @@
    .result{
       padding: 6px 12px;
       &:nth-child(odd){
-         background-color:$yellow;
+         background-color:darken($light-grey,5%);
       }
    }
 }

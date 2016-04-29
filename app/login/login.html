@@ -12,12 +12,12 @@
          <div class="form-group">
             <input required type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
          </div>
-         <button type="submit" class="submitter">Logga in</button>
+         <button class="action" type="submit" class="submitter">Logga in</button>
       </form>
 
    </div>
    <div ng-show="loggedIn">
-      <button type="submit" ng-click="logOut()" class="btn btn-primary">Logga ut</button>
+      <button class="action" type="submit" ng-click="logOut()" class="btn btn-primary">Logga ut</button>
    </div>
 </div>
-<h3 ng-hide="loggedIn" class="text-centre">Inte medlem än? <span class="action"><a ui-sref="register">Registrera ditt företag nu<a></span></h3>
+<h3 ng-hide="loggedIn" class="text-centre">Inte medlem än? <span class="action-text"><a ui-sref="register">Registrera ditt företag nu<a></span></h3>

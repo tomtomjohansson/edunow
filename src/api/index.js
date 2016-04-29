@@ -3,25 +3,31 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 
-router.get('/students',(req,res,next)=>{
-   let queries = User.find({usertype:"student"});
-   queries.exec((err,users)=>{
-      if(err){
-         return res.status(500).json({message: err.message});
-      }
-      else{
-         res.json({users:users,message:"Found users"});
-      }
-   });
-});
+// router.get('/students',(req,res,next)=>{
+//    let queries = User.find({usertype:"student"});
+//    queries.exec((err,users)=>{
+//       if(err){
+//          return res.status(500).json({message: err.message});
+//       }
+//       else{
+//          res.json({users:users,message:"Found users"});
+//       }
+//    });
+// });
 
-router.get('/companies',(req,res,next)=>{
-   User.find({usertype:"company"},(err,users)=>{
+router.get('/users',(req,res,next)=>{
+   User.find({},(err,users)=>{
       if(err){
          return res.status(500).json({message: err.message});
       }
       else{
-         res.json({users:users,message:"Found users"});
+         let students = users.filter((x)=>{
+            return x.usertype === 'student';
+         });
+         let companies = users.filter((x)=>{
+            return x.usertype === 'company';
+         });
+         res.json({users:users,students:students,companies:companies,message:"Found users"});
       }
    });
 });
