@@ -3,18 +3,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 
-// router.get('/students',(req,res,next)=>{
-//    let queries = User.find({usertype:"student"});
-//    queries.exec((err,users)=>{
-//       if(err){
-//          return res.status(500).json({message: err.message});
-//       }
-//       else{
-//          res.json({users:users,message:"Found users"});
-//       }
-//    });
-// });
-
 router.get('/users',(req,res,next)=>{
    User.find({},(err,users)=>{
       if(err){
@@ -28,6 +16,20 @@ router.get('/users',(req,res,next)=>{
             return x.usertype === 'company';
          });
          res.json({users:users,students:students,companies:companies,message:"Found users"});
+      }
+   });
+});
+
+router.get('/users/:username',(req,res,next)=>{
+   let username =req.params.username;
+   User.findOne({username:username},(err,user)=>{
+      if (err) {
+         return res.status(500).json({noUser:"Användaren finns inte",message: err.message});
+      }
+      else{
+         user.infoAboutTags().then((result)=>{
+            res.json({user:user,tags:result,message:"Found user with username"});
+         });
       }
    });
 });
@@ -53,7 +55,6 @@ router.put('/interesting',(req,res,next)=>{
 });
 
 router.post('/mypage',(req,res,next)=>{
-   // console.log(req.body);
    User.findOne({username:req.body.username},(err,user)=>{
       if(err){
          return res.status(500).json({message: err.message});

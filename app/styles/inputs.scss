@@ -42,27 +42,43 @@ button[disabled]{
    &.isAdded{
       background-color: transparent;
       color: transparent;
+      margin-right:-2rem;
       i{
          color: $green;
-         font-size:45px;
+         font-size:2.8rem;
          float:left;
-         margin: -15px -38px -15px 0px !important;
+         margin: -15px -40px -15px 0px !important;
       }
    }
 }
 
+.linkToPage{
+   clear:both;
+   &:hover{
+      cursor: pointer;
+   }
+}
 .results{
    p{
       display:inline-block;
       font-family: $exo;
       font-weight: 600;
       font-style:italic;
-      margin-right: 2rem;
+      margin-right: 1.5rem;
+      &:first-of-type{
+         color:$soft-red;
+         margin-bottom:0px;
+      }
    }
    button{
-      display:block;
-      margin-bottom: 1rem;
-      // float:right;
+      margin: 0 8px 0 0;
+   }
+   ul{
+      display: inline;
+      li:hover{
+         cursor:default;
+         box-shadow:none;
+      }
    }
 }
 
@@ -124,8 +140,7 @@ textarea{
    li{
       display: inline-block;
       margin: 0px 10px 10px 0px;
-      color:black;
-      padding: 6px 12px;
+      padding: 8px 12px;
       font-family:$exo;
       border-radius: 4px;
       &:hover{
@@ -138,6 +153,7 @@ textarea{
    }
    .yellow{
       background-color: $yellow;
+      color:black;
    }
    .black{
       background-color: $off-black;

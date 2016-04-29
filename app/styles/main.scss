@@ -24,7 +24,7 @@ $shadow: 0 0 5px rgba(0,0,0,0.7);
 @import 'nav';
 @import 'inputs';
 @import 'searches';
-@import 'medias';
+@import 'userpage';
 
 :root{
    font-size: 16px;
@@ -93,8 +93,13 @@ footer {
    background-color:$soft-red;
 }
 
+.alert-text{
+   color:$soft-red;
+}
+
 .action{
    background-color: $blue;
+   color:white;
 }
 
 .action-text{
@@ -103,6 +108,14 @@ footer {
 
 .adding{
    background-color: $green;
+}
+
+.adding-text{
+   color:$green;
+}
+
+.neutral{
+   background-color: $yellow;
 }
 
 h1,h2,h3,h4{

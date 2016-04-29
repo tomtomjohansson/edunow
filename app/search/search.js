@@ -60,18 +60,39 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    }
 
-   $scope.student = false;
+   function checkIntern(thing){
+      if($scope.intern === true){
+         if(thing.interns === true){
+            return true;
+         }
+      }
+      else{
+         return true;
+      }
+   }
+
+   function checkTerm(thing){
+      if($scope.lastTerm === true){
+         if(thing.semesters[0].current === thing.semesters[0].total){
+            return true;
+         }
+      }
+      else{
+         return true;
+      }
+   }
+
    $scope.lastTerm = false;
    $scope.intern = false;
-   $scope.project = false;
    $scope.matchAll = false;
 
    $scope.myCompanyFilter = (thing)=>{
       if(
-      ($scope.name !== "" && thing.name.indexOf($scope.name)>=0) ||
-      (($scope.user.specialties && $scope.user.specialties.length>0) &&
+      ((($scope.user.specialties && $scope.user.specialties.length>0) &&
       checkSpecialties(thing)) ||
-      ($scope.search !== "" && checkAll(thing)))
+      ($scope.search !== "" && checkAll(thing)) ||
+      ($scope.name !== "" && thing.name.indexOf($scope.name)>=0)) &&
+      (checkIntern(thing)))
       {
          return true;
       }
@@ -79,10 +100,11 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
 
    $scope.myStudentFilter = (thing)=>{
       if(
-      ($scope.school !== "" && thing.school.indexOf($scope.school)>=0) ||
-      (($scope.user.specialties && $scope.user.specialties.length>0) &&
+      ((($scope.user.specialties && $scope.user.specialties.length>0) &&
       checkSpecialties(thing)) ||
-      ($scope.search !== "" && checkAll(thing)))
+      ($scope.search !== "" && checkAll(thing)) ||
+      ($scope.school !== "" && thing.school.indexOf($scope.school)>=0)) &&
+      (checkTerm(thing)))
       {
          return true;
       }

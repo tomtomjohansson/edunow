@@ -9,12 +9,12 @@
    </div>
 
    <div ng-if="user.usertype === 'company'">
-      <h1>Du är inloggad som {{theUser.name}}!</h1>
-      <h3>Användare du markerat som intressanta</h3>
+      <h1>Du är inloggad som {{theUser.name}}</h1>
+      <h4>Användare du markerat som intressanta:</h4>
       <div class="results">
          <div class="result" ng-repeat="interest in interests">
             <p>{{interest.name}}</p>
-            <p>{{interest.points}}</p>
+            <p>{{interest.contact}}</p><div class="clear"></div>
             <ul class="tagChoices" >
                <li ng-repeat="tag in interest.specialties" class="black">{{tag}}</li>
             </ul>

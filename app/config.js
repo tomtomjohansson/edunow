@@ -9,11 +9,12 @@ import navCtrl from 'navigation/navigation.js';
 import navDir from 'navigation/navDirective.js';
 import myCtrl from 'myPage/myPage.js';
 import SearchCtrl from 'search/search.js';
+import UserpageCtrl from 'userPage/userpage.js';
 
-const app = angular.module('companyApp', [uiRouter,ngAnimate,auth.name,search.name,AuthCtrl.name,HomeCtrl.name,navCtrl.name,navDir.name,myCtrl.name,SearchCtrl.name]);
+const app = angular.module('companyApp', [uiRouter,ngAnimate,auth.name,search.name,AuthCtrl.name,HomeCtrl.name,navCtrl.name,navDir.name,myCtrl.name,SearchCtrl.name,UserpageCtrl.name]);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
-   // $urlRouterProvider.otherwise('/');
+   $urlRouterProvider.otherwise('/');
    $stateProvider
       .state('home', {
          url: '/',
@@ -35,18 +36,15 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
          template: require('myPage/myPage.html'),
          controller: 'myCtrl',
       })
+      .state('userpage',{
+         url: '/user/:username',
+         template: require('userPage/userpage.html'),
+         controller: 'UserpageCtrl',
+      })
       .state('login', {
          url: '/login',
          template: require('login/login.html'),
-         controller: 'AuthCtrl',
-         onEnter: ['$state','$window','$timeout',($state, $window, $timeout)=>{
-            $timeout(()=>{
-               if($window.localStorage['user-token']){
-                  // $state.go('home');
-                  console.log('logged in should log out');
-               }
-            },0);
-         }]
+         controller: 'AuthCtrl'
       })
       .state('register', {
          url: '/register',

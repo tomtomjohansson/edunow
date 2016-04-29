@@ -9,9 +9,9 @@ const searchFactory = angular.module('companyApp.search', [])
       return $http.get('/api/users');
    };
 
-   // search.allCompanies = ()=>{
-   //    return $http.get('/api/companies');
-   // };
+   search.getUserpage = (username)=>{
+      return $http.get('api/users/'+username);
+   };
 
    search.addAsInteresting = (added,user)=>{
       let interest = {
