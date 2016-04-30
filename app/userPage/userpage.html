@@ -4,14 +4,20 @@
       <h1>{{user.name}}</h1>
       <p class="semi"><em>{{user.contact}}</em></p>
       <p>{{user.description}}</p>
+      <div ng-if="user.usertype==='company'">
       <p class="semi">Tar emot praktikanter: <i class="fa" ng-class="{'alert-text fa-times-circle-o':!user.interns, 'adding-text fa-check-circle-o' :user.interns}" aria-hidden="true"></i></p>
       <p class="semi">Tar emot förslag om projektarbeten: <i class="fa" ng-class="{'alert-text fa-times-circle-o':!user.projects, 'adding-text fa-check-circle-o' :user.projects}" aria-hidden="true"></i></p>
+      </div>
    </div>
    <div id="tags">
       <h3>Det här tycker vi är viktigt</h3>
       <p>Klicka på taggarna för mer information!</p>
       <ul class="tagChoices" >
-         <li ng-repeat="tag in user.specialties" class="black">{{tag}}</li>
+         <li ng-click="tagInfo(specialty)" ng-class="{yellow:$index === current, black:$index !== current}" ng-repeat="specialty in user.specialties">{{specialty}}</li>
       </ul>
+      <div class="tagPresentation">
+         <p><span>{{currentTag.numberOfStud}}</span> studenter har kompetensen {{currentTag._id}}</p>
+         <p><span>{{currentTag.numberOfCom}}</span> företag eftersöker kompetensen {{currentTag._id}}</p>
+      </div>
    </div>
 </div>

@@ -27,5 +27,17 @@
          margin-bottom:0.5rem;
       }
    }
+   .tagPresentation p{
+      font-family: helvetica;
+      span{
+         font-family: $exo;
+         font-weight: 600;
+         font-style: italic;
+         color:$blue;
+         font-size:1.8rem;
+         margin-right: 5px;
+         vertical-align: middle;
+      }
+   }
 
 }

@@ -1,14 +1,24 @@
-'use strict'
+'use strict';
 import angular from 'angular';
 
 const UserpageCtrl = angular.module('companyApp.UserpageCtrl',[])
 .controller('UserpageCtrl',($scope, $state, $stateParams,auth, search)=>{
 
-   $scope.forRequest = $stateParams.username;
+   let forRequest = $stateParams.username;
 
-   search.getUserpage($scope.forRequest).success((response)=>{
+   search.getUserpage(forRequest).success((response)=>{
       $scope.user = response.user;
+      $scope.tags = response.tags;
+      $scope.currentTag = $scope.tags[0];
+      $scope.current = 0;
    });
+
+   $scope.tagInfo = (tag)=>{
+      $scope.currentTag = $scope.tags.find((x)=>{
+         return x._id == tag;
+      });
+      $scope.current = $scope.tags.indexOf($scope.currentTag);
+   };
 
 });
 

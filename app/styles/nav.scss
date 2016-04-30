@@ -6,6 +6,7 @@ nav{
    bottom:0;
    background-color: white;
    padding: 30px;
+   max-width: 90%;
    box-shadow: 3px 0 30px rgba(0, 0, 0, 0.4);
    @include medium {
       display:none;
@@ -19,6 +20,7 @@ nav{
          color: $medium-grey;
          font-family: 'Exo', sans-serif;
          text-transform: uppercase;
+         font-weight: 400;
       }
 
       i{

@@ -27,9 +27,10 @@ router.get('/users/:username',(req,res,next)=>{
          return res.status(500).json({noUser:"Användaren finns inte",message: err.message});
       }
       else{
-         user.infoAboutTags().then((result)=>{
-            res.json({user:user,tags:result,message:"Found user with username"});
-         });
+         let tags = user.infoAboutTags(sendJson);
+      }
+      function sendJson(tags){
+         res.json({user:user,tags:tags,message:"Found user with username"});
       }
    });
 });

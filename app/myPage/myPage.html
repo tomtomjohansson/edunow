@@ -13,8 +13,10 @@
       <h4>Användare du markerat som intressanta:</h4>
       <div class="results">
          <div class="result" ng-repeat="interest in interests">
-            <p>{{interest.name}}</p>
-            <p>{{interest.contact}}</p><div class="clear"></div>
+            <div class="linkToPage"><a ui-sref="userpage({username:interest.username})">
+               <p>{{interest.name}}</p>
+               <p>{{interest.contact}}</p>
+            </a></div>
             <ul class="tagChoices" >
                <li ng-repeat="tag in interest.specialties" class="black">{{tag}}</li>
             </ul>

@@ -27,6 +27,32 @@ userSchema.methods.findInteresting = function findInteresting(){
    return this.model('User').find({ username: {$in:this.interesting}});
 };
 
+userSchema.methods.infoAboutTags = function infoAboutTags(cb){
+   // console.log(this.specialties);
+   let tagArr = [];
+   this.specialties.forEach((specialty)=>{
+      this.model('User').aggregate([
+         {$match:{specialties:specialty}},
+         {$project:{
+            'student':{$cond:[{$eq:['$usertype','student']},1,0]},
+            'company':{$cond:[{$eq:['$usertype','company']},1,0]}
+         }},
+         {$group:{_id:specialty,numberOfStud:{$sum:'$student'},numberOfCom:{$sum:'$company'}}}
+      ],(err,object)=>{
+         if(err){
+            console.log('fuck it'+err);
+         }
+         else{
+            // console.log(object);
+            tagArr.push(object[0]);
+            if(tagArr.length === this.specialties.length){
+               cb(tagArr);
+            }
+         }
+      });
+   });
+};
+
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
