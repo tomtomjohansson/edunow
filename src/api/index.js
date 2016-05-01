@@ -61,6 +61,24 @@ router.delete('/users/:username',(req,res,next)=>{
    });
 });
 
+router.get('/home',(req,res,next)=>{
+   User.aggregate(
+         {$project:{
+            'student':{$cond:[{$eq:['$usertype','student']},1,0]},
+            'company':{$cond:[{$eq:['$usertype','company']},1,0]},
+            'studentSpecs':{$cond:[{$eq:['$usertype','student']},{$size:'$specialties'},0]},
+            'companySpecs':{$cond:[{$eq:['$usertype','company']},{$size:'$specialties'},0]},
+         }},
+         {$group:{_id:'stuff',numberOfStud:{$sum:'$student'},numberOfCom:{$sum:'$company'},numberOfStudSpecs:{$sum:'$studentSpecs'},numberOfComSpecs:{$sum:'$companySpecs'}}},(err,object)=>{
+      if (err) {
+         return res.status(500).json({noUser:"Something went wrong",message: err.message});
+      }
+      else{
+         res.json({object:object, message:"Found info for homepage"});
+      }
+   });
+});
+
 router.put('/interesting',(req,res,next)=>{
    let condition = {username:req.body.user};
    let update;

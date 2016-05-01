@@ -1,5 +1,5 @@
 // colors
-$light-grey: #F4F4F4;
+$light-grey: #FDFDFD;
 $medium-grey:#757575;
 $action: #2DB8E6;
 $yellow: #F6CC4C;
@@ -166,6 +166,77 @@ ul{
 
       span{
          color:$yellow;
+      }
+   }
+}
+
+.imgContainer{
+   position:relative;
+   width:100%;
+   height:100%;
+   img{
+      max-width: 100%;
+      // filter: grayscale(100%);
+      filter: blur(50%);
+      transition: all 0.2s ease-in;
+      &:hover{
+         filter: saturate(100%);
+         box-shadow: $shadow;
+      }
+   }
+
+   h1{
+      text-shadow: $shadow;
+      font-size: 2.5rem;
+      color: white;
+      text-transform: uppercase;
+      z-index: 3;
+      position: absolute;
+      bottom:20px;
+      left:20px;
+      @include medium {
+         font-size: 1.8rem;
+      }
+   }
+}
+
+
+.homeInfo{
+   margin:0 auto;
+   max-width: 100%;
+   background-color: $blue;
+   padding: 1rem;
+   div{
+      width: 48%;
+      display: inline-block;
+      text-align: center;
+      &:last-of-type{
+         float:right;
+         @include medium {
+            float: none;
+         }
+      }
+      @include medium {
+         width:100%;
+         margin-bottom:1.5rem;
+      }
+      h3{
+         color:white;
+         span{
+            color:$yellow !important;
+            font-size: 1.2rem;
+            vertical-align: middle;
+            text-shadow: $shadow;
+         }
+      }
+      button{
+         padding: 12px 0px;
+         margin-top:1rem;
+         background-color: $yellow;
+         color: black;
+         font-family: $exo;
+         font-weight: 600;
+         width:100%;
       }
    }
 }

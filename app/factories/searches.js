@@ -21,6 +21,10 @@ const searchFactory = angular.module('companyApp.search', [])
       return $http.delete('/api/users/'+username);
    };
 
+   search.getHomePage = ()=>{
+      return $http.get('/api/home/');
+   };
+
    search.addAsInteresting = (added,user)=>{
       let interest = {
          interesting:added,

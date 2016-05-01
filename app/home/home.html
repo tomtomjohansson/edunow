@@ -1,3 +1,14 @@
-<h1>Home</h1>
-<h3>{{hello}}</h3>
-<h3>{{name}}</h3>
+<div class="imgContainer">
+   <img src="code.jpg" alt="">
+   <h1>Där framtidens<br> utvecklare möts</h1>
+</div>
+<div class="homeInfo">
+   <div class="studentInfo">
+      <h3>Just nu nätverkar <span class="action-text">{{info.numberOfStud}}</span> studenter med totalt <span class="action-text">{{info.numberOfStudSpecs}}</span> kompetenser här på eduNow. Missa inte chansen att hitta nya talanger!</h3>
+      <button ui-sref="register">Registrera ert företag nu</button>
+   </div>
+   <div class="companyInfo">
+      <h3>Just nu nätverkar <span class="action-text">{{info.numberOfCom}}</span> företag som söker totalt <span class="action-text">{{info.numberOfComSpecs}}</span> kompetenser här på eduNow. Vill du jobba för något av dem i framtiden?</h3>
+      <button>Sök utbildningar nu</button>
+   </div>
+</div>

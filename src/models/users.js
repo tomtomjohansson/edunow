@@ -28,7 +28,6 @@ userSchema.methods.findInteresting = function findInteresting(){
 };
 
 userSchema.methods.infoAboutTags = function infoAboutTags(cb){
-   // console.log(this.specialties);
    let tagArr = [];
    this.specialties.forEach((specialty)=>{
       this.model('User').aggregate([
@@ -43,7 +42,6 @@ userSchema.methods.infoAboutTags = function infoAboutTags(cb){
             console.log('fuck it'+err);
          }
          else{
-            // console.log(object);
             tagArr.push(object[0]);
             if(tagArr.length === this.specialties.length){
                cb(tagArr);
