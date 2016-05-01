@@ -1,0 +1,53 @@
+<div id="updatepage" class="centre smaller ui-back">
+   <div ng-show="error" class="alert">
+       <span>{{ error.message }}</span>
+   </div>
+   <h4 class="alert-text">{{message}}</h4>
+   <a class="go-back" ui-sref="myPage"><i class="fa fa-backward" aria-hidden="true"></i>
+Tillbaka till Min Sida</a>
+   <div ng-hide="message">
+   <form ng-submit="updateUser()">
+      <h2>Uppdatera dina uppgifter</h2>
+      <div class="form-group">
+         <input type="text" class="form-control" placeholder="Namn på företaget" ng-model="theUser.name" required/>
+      </div>
+      <div class="form-group">
+         <textarea minlength="150" maxlength="500" class="form-control" placeholder="Beskrivning av företaget" ng-model="theUser.description" required></textarea>
+      </div>
+      <div class="form-group">
+         <input type="text" class="form-control" placeholder="Länk till logotyp" ng-model="theUser.image"/>
+      </div>
+      <div class="form-group">
+         <input type="email" class="form-control" placeholder="Kontakt - email" ng-model="theUser.contact"/>
+      </div>
+      <div ng-show="theUser.usertype == 'company'">
+      <div class="form-group">
+         <label for="intern">Kan ni tänka er att emot studenter som ska ut på LIA?</label>
+         <label><input required type="radio" name="intern" ng-model="theUser.interns" ng-value="true"/> Ja</label>
+         <label><input required type="radio" name="intern" ng-model="theUser.interns" ng-value="false"/> Nej</label>
+      </div>
+      <div class="form-group">
+         <label for="project">Kan ni tänka er att samarbeta med studenter som skriver examensarbete?</label>
+         <label><input required type="radio" name="project" ng-model="theUser.projects" ng-value="true"/> Ja</label>
+         <label><input required type="radio" name="project" ng-model="theUser.projects" ng-value="false"/> Nej</label>
+      </div>
+      <div class="form-group">
+         <label>Vilka teknologier/bibliotek/databaser eller annat är viktigast för ert företag?</label>
+         <div class="tag-box">
+            <input ng-model="searching" ng-focus="choices=true" type="text" placeholder="taggar">
+            <div class="choices" ng-show="choices">
+               <ul class="listChoices">
+                  <li  ng-repeat="tech in techsFiltered | orderBy:tech | filter:searching:strict" ng-click="addTag(tech)" class="tag">{{tech}}</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <ul class="tagChoices">
+         <li  ng-repeat="choice in theUser.specialties" class="chosenTag yellow">{{choice}} <i ng-click="removeChoice(choice)" class="fa fa-times-circle" aria-hidden="true"></i></li>
+      </ul>
+      </div>
+      <br>
+      <button class="action" type="submit" class="submitter">Uppdatera</button>
+   </form>
+   </div>
+</div>

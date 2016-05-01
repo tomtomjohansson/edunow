@@ -36,6 +36,18 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
          template: require('myPage/myPage.html'),
          controller: 'myCtrl',
       })
+      .state('update',{
+         url: '/minsida/update',
+         template: require('myPage/update.html'),
+         controller: 'myCtrl',
+         onEnter: ['$state','$window','$timeout',($state, $window, $timeout)=>{
+            $timeout(()=>{
+               if(!$window.localStorage['user-token']){
+                  $state.go('home');
+               }
+            },0);
+         }]
+      })
       .state('userpage',{
          url: '/user/:username',
          template: require('userPage/userpage.html'),

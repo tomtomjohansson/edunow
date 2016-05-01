@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const angular = require('angular');
 
 const authFactory = angular.module('companyApp.auth', [])
@@ -13,7 +13,6 @@ const authFactory = angular.module('companyApp.auth', [])
    auth.getToken = ()=>{
       return $window.localStorage['user-token'];
    };
-
 
    auth.isLoggedIn = ()=>{
       let token = auth.getToken();
@@ -46,7 +45,6 @@ const authFactory = angular.module('companyApp.auth', [])
    };
 
    auth.logOut = ()=>{
-      console.log('Logga ut då för fan')
       $window.localStorage.removeItem('user-token');
       $window.localStorage.removeItem('user');
    };

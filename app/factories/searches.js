@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const angular = require('angular');
 
 const searchFactory = angular.module('companyApp.search', [])
@@ -11,6 +11,14 @@ const searchFactory = angular.module('companyApp.search', [])
 
    search.getUserpage = (username)=>{
       return $http.get('api/users/'+username);
+   };
+
+   search.updateUser = (user)=>{
+      return $http.put('/api/users',user);
+   };
+
+   search.removeUser = (username)=>{
+      return $http.delete('/api/users/'+username);
    };
 
    search.addAsInteresting = (added,user)=>{
@@ -33,10 +41,6 @@ const searchFactory = angular.module('companyApp.search', [])
 
    search.getMyPage = (user)=>{
       return $http.post('/api/mypage',user);
-   };
-
-   search.removeUser = (username)=>{
-      return $http.delete('/api/users/'+username);
    };
 
 

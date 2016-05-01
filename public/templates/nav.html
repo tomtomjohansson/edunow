@@ -1,22 +1,33 @@
-<nav>
-   <ul>
-      <li>
-         <a ui-sref="home" ui-sref-active="action-text" class='navlink'><i class="fa fa-home" aria-hidden="true"></i>hem</a>
-      </li>
-      <li>
-         <a ui-sref="login" ui-sref-active="action-text" class='navlink'><i class="fa fa-sign-in" aria-hidden="true"></i>logga in</a>
-      </li>
-      <li>
-         <a ui-sref="#" class='navlink'><i class="fa fa-pencil" aria-hidden="true"></i>Bloggar</a>
-      </li>
-      <li>
-         <a ui-sref="companies" ui-sref-active="action-text" class='navlink'><i class="fa fa-search" aria-hidden="true"></i>Sök på företag</a>
-      </li>
-      <li>
-         <a ui-sref="students" ui-sref-active="action-text" class='navlink'><i class="fa fa-search" aria-hidden="true"></i>Sök på studenter</a>
-      </li>
-      <li>
-         <a ui-sref="myPage" ui-sref-active="action-text" class='navlink'><i class="fa fa-user" aria-hidden="true"></i>Min sida</a>
-      </li>
-   </ul>
-</nav>
+<div id="navheader">
+   <header>
+      <div id="loginHeader">
+         <a ui-sref="login">Logga in/Registrera</a>
+      </div>
+      <div class="logoHeader">
+         <h1>edu<span>N</span>ow</h1>
+      </div>
+   </header>
+   <nav>
+      <ul>
+         <li>
+            <a ui-sref="home" ui-sref-active="action-text" class='navlink'><i class="fa fa-home" aria-hidden="true"></i>hem</a>
+         </li>
+         <li>
+            <a ui-sref="login" ui-sref-active="action-text" class='navlink'><i class="fa fa-sign-in" aria-hidden="true"></i>logga in/ut</a>
+            <!-- <a ng-show="isLoggedIn" ui-sref="login" ui-sref-active="action-text" class='navlink'><i class="fa fa-sign-in" aria-hidden="true"></i>logga ut</a> -->
+         </li>
+         <li>
+            <a ui-sref="#" class='navlink'><i class="fa fa-pencil" aria-hidden="true"></i>Bloggar</a>
+         </li>
+         <li>
+            <a ui-sref="companies" ui-sref-active="action-text" class='navlink'><i class="fa fa-search" aria-hidden="true"></i>Sök på företag</a>
+         </li>
+         <li>
+            <a ui-sref="students" ui-sref-active="action-text" class='navlink'><i class="fa fa-search" aria-hidden="true"></i>Sök på studenter</a>
+         </li>
+         <li>
+            <a ui-sref="myPage" ui-sref-active="action-text" class='navlink'><i class="fa fa-user" aria-hidden="true"></i>Min sida</a>
+         </li>
+      </ul>
+   </nav>
+</div>

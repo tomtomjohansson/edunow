@@ -3,6 +3,7 @@
    <div ng-if="!user">
       <p>Du måste <a ui-sref="login">logga in</a> för att kunna se din sida!</p>
    </div>
+   <p class="alert-text">{{message}}</p>
 
    <div ng-if="theUser">
       <h1>Du är inloggad som {{theUser.name}}</h1>
@@ -21,7 +22,7 @@
       </div>
       <div class="account">
          <h3>Inställningar för ditt konto</h3>
-         <button class="action" ng-click="">Uppdatera ditt konto<i class="fa fa-wrench" aria-hidden="true"></i></button>
+         <button class="action" ui-sref="update">Uppdatera ditt konto<i class="fa fa-wrench" aria-hidden="true"></i></button>
          <button class="alert" ng-click="removeUser()">Avsluta ditt konto<i class="fa fa-times-circle" aria-hidden="true"></i></button>
       </div>
    </div>

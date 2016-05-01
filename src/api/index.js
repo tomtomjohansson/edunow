@@ -35,6 +35,20 @@ router.get('/users/:username',(req,res,next)=>{
    });
 });
 
+router.put('/users',(req,res,next)=>{
+   let user = req.body;
+   let option = {new:true};
+   User.findOneAndUpdate({username:req.body.username},user,option,(err,user)=>{
+      if(err){
+         return res.status(500).json({message: err.message});
+      }
+      else{
+         console.log(user);
+         res.json({user:user, message:"Dina uppgifter har uppdaterats"});
+      }
+   });
+});
+
 router.delete('/users/:username',(req,res,next)=>{
    let username =req.params.username;
    User.findOneAndRemove({username:username},(err,user)=>{
