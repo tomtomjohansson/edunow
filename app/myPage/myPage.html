@@ -4,11 +4,7 @@
       <p>Du måste <a ui-sref="login">logga in</a> för att kunna se din sida!</p>
    </div>
 
-   <div ng-if="user.usertype === 'student'">
-      <h1>Hej {{user.name}}!</h1>
-   </div>
-
-   <div ng-if="user.usertype === 'company'">
+   <div ng-if="theUser">
       <h1>Du är inloggad som {{theUser.name}}</h1>
       <h4>Användare du markerat som intressanta:</h4>
       <div class="results">
@@ -20,9 +16,13 @@
             <ul class="tagChoices" >
                <li ng-repeat="tag in interest.specialties" class="black">{{tag}}</li>
             </ul>
-            <!-- <button ng-disabled="!isLoggedIn" ng-click="addAsInteresting(result.username)" class="alert">Intressant</button> -->
             <button class="alert"  ng-click="removeInterest(interest)">Ta bort<i class="fa fa-times-circle" aria-hidden="true"></i></button>
          </div>
+      </div>
+      <div class="account">
+         <h3>Inställningar för ditt konto</h3>
+         <button class="action" ng-click="">Uppdatera ditt konto<i class="fa fa-wrench" aria-hidden="true"></i></button>
+         <button class="alert" ng-click="removeUser()">Avsluta ditt konto<i class="fa fa-times-circle" aria-hidden="true"></i></button>
       </div>
    </div>
 </div>

@@ -35,6 +35,18 @@ router.get('/users/:username',(req,res,next)=>{
    });
 });
 
+router.delete('/users/:username',(req,res,next)=>{
+   let username =req.params.username;
+   User.findOneAndRemove({username:username},(err,user)=>{
+      if (err) {
+         return res.status(500).json({noUser:"Användaren finns inte",message: err.message});
+      }
+      else{
+         res.json({user:user, message:"Removed user with username"});
+      }
+   });
+});
+
 router.put('/interesting',(req,res,next)=>{
    let condition = {username:req.body.user};
    let update;

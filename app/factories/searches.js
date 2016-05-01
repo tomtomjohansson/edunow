@@ -35,7 +35,9 @@ const searchFactory = angular.module('companyApp.search', [])
       return $http.post('/api/mypage',user);
    };
 
-
+   search.removeUser = (username)=>{
+      return $http.delete('/api/users/'+username);
+   };
 
 
    return search;

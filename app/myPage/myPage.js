@@ -21,6 +21,14 @@ const myCtrl = angular.module('companyApp.myCtrl',[])
       });
    };
 
+   $scope.removeUser = ()=>{
+      search.removeUser($scope.theUser.username).success((response)=>{
+         console.log(response.message);
+         auth.logOut();
+         $state.go('home');
+      });
+   };
+
 });
 
 export default myCtrl;
