@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 
+// Gets all the users for searches. Divides them into students and companys.
 router.get('/users',(req,res,next)=>{
    User.find({},(err,users)=>{
       if(err){
@@ -20,6 +21,7 @@ router.get('/users',(req,res,next)=>{
    });
 });
 
+// Gets user for userpages. Gets info on tags of the user.
 router.get('/users/:username',(req,res,next)=>{
    let username =req.params.username;
    User.findOne({username:username},(err,user)=>{
@@ -35,6 +37,7 @@ router.get('/users/:username',(req,res,next)=>{
    });
 });
 
+// Updates the user.
 router.put('/users',(req,res,next)=>{
    let user = req.body;
    let option = {new:true};
@@ -49,6 +52,7 @@ router.put('/users',(req,res,next)=>{
    });
 });
 
+// Deletes a user
 router.delete('/users/:username',(req,res,next)=>{
    let username =req.params.username;
    User.findOneAndRemove({username:username},(err,user)=>{
@@ -61,6 +65,7 @@ router.delete('/users/:username',(req,res,next)=>{
    });
 });
 
+// Gets info for landingpage.
 router.get('/home',(req,res,next)=>{
    User.aggregate(
          {$project:{
@@ -79,6 +84,7 @@ router.get('/home',(req,res,next)=>{
    });
 });
 
+// Updates the users list of interests. Depending on request-body performs a pull or a push.
 router.put('/interesting',(req,res,next)=>{
    let condition = {username:req.body.user};
    let update;
@@ -99,6 +105,7 @@ router.put('/interesting',(req,res,next)=>{
    });
 });
 
+// Gets info for my page. Finds the user and then gets the users he/she finds interesting.
 router.post('/mypage',(req,res,next)=>{
    User.findOne({username:req.body.username},(err,user)=>{
       if(err){

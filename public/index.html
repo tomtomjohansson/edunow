@@ -11,13 +11,17 @@
 </head>
 <body ng-cloak>
    <div id="wrapper">
+      <!-- Navigation from templates/nav.html -->
       <navigation></navigation>
       <div class="animation">
+         <!-- the ui-views from ../app/home || login || myPage etc. -->
          <div class="container" ui-view></div>
       </div>
    </div>
    <footer class="text-centre">
       <p>Utveckling och design: Tomas Johansson ©</p>
+      <a href="https://github.com/tomtomjohansson/edunow"><i class="fa fa-github" aria-hidden="true"></i>Det här projektet på Github</a>
+      <a href="mailto:tomas.johansson23@gmail.com?Subject:FromEduNow"><i class="fa fa-envelope-o" aria-hidden="true"></i>tomas.johansson23@gmail.com</a>
    </footer>
    <script src="bundle.js"></script>
    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>

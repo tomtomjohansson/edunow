@@ -14,7 +14,7 @@ require('./src/database');
 require('./src/models/users');
 require('./config/passport');
 
-// app.use('/', express.static('public'));
+// Initialize passport, set routes for handling of searches and authentication
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(parser.json());
 app.use(passport.initialize());

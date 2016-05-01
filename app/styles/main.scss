@@ -60,6 +60,15 @@ footer {
    background-color: $off-black;
    color:white;
    padding: 10px;
+   a{
+      color:white;
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      i{
+         margin-right:0.5rem;
+      }
+   }
 }
 
 .container{

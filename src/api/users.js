@@ -6,6 +6,7 @@ const jwt = require('express-jwt');
 const auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 const passport = require('passport');
 
+// Gets request body from registration. Saves new user to database
 router.post('/register', function(req, res, next){
    if(!req.body.username || !req.body.password){
       return res.status(400).json({message: 'Please fill out all fields'});
@@ -20,20 +21,21 @@ router.post('/register', function(req, res, next){
    user.specialties = req.body.specialties;
    user.interns = req.body.interns;
    user.projects = req.body.projects;
-   user.setPassword(req.body.password)
+   user.setPassword(req.body.password);
    user.save(function (err){
       if(err){
          return next(err);
       }
       else{
-         return res.json({user: user, token: user.generateJWT()})
+         return res.json({user: user, token: user.generateJWT()});
       }
    });
 });
 
+// Logs in the user. Returns user and webtoken
 router.post('/login', function(req, res, next){
    if(!req.body.username || !req.body.password){
-      return res.status(400).json({message: 'Please fill out all fields'});
+      return res.status(400).json({message: 'Var god fyll i alla fälten'});
    }
    passport.authenticate('local', function(err, user, info){
    if(err){

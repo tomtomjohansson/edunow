@@ -1,3 +1,4 @@
+// Import factories, controllers and directives.
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
@@ -11,8 +12,10 @@ import myCtrl from 'myPage/myPage.js';
 import SearchCtrl from 'search/search.js';
 import UserpageCtrl from 'userPage/userpage.js';
 
+// Defines the application and its dependencies
 const app = angular.module('companyApp', [uiRouter,ngAnimate,auth.name,search.name,AuthCtrl.name,HomeCtrl.name,navCtrl.name,navDir.name,myCtrl.name,SearchCtrl.name,UserpageCtrl.name]);
 
+// Provides routes. State references internal navigation. Templates found in subfolders.
 app.config(($stateProvider, $urlRouterProvider, $locationProvider)=>{
    $urlRouterProvider.otherwise('/');
    $stateProvider

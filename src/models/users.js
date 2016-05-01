@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
-
+// Define schema for users
 const userSchema = new mongoose.Schema({
    usertype: String,
    username: {type: String, lowercase: true, unique: true},
@@ -23,10 +23,12 @@ const userSchema = new mongoose.Schema({
    interesting: [String],
 });
 
+// When user goes to mypage, get users he/she finds interesting
 userSchema.methods.findInteresting = function findInteresting(){
    return this.model('User').find({ username: {$in:this.interesting}});
 };
 
+// Get info on tags. How many students, how many companys has selected each tag
 userSchema.methods.infoAboutTags = function infoAboutTags(cb){
    let tagArr = [];
    this.specialties.forEach((specialty)=>{
@@ -51,16 +53,19 @@ userSchema.methods.infoAboutTags = function infoAboutTags(cb){
    });
 };
 
+// Gets the password when user signs up. Encrypts it.
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
+// Checks if password is valid at login.
 userSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
 };
 
+// Generates webtoken. Sets expiration time for 90 days.
 userSchema.methods.generateJWT = function() {
   var today = new Date();
   var exp = new Date(today);
