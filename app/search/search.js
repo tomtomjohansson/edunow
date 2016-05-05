@@ -39,6 +39,7 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
 
 
    // Filtering starts
+   // Filter for specialties. If user wants to match all push it into array, else return true if the current specialty is in the user-array. If user wants to match all, see if the array-lengths matches, if so return true.
    function checkSpecialties(thing){
       let arr = [];
       for(var i in $scope.user.specialties){
@@ -57,6 +58,8 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
          }
       }
    }
+
+   // For search on all. Search through all the keys in the object that are typeof String.
    function checkAll(thing){
       if($scope.search !== ""){
       for(var i in thing){
@@ -67,6 +70,7 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    }
 
+   // If interns checkbox is true - check if company accepts interns.
    function checkIntern(thing){
       if($scope.intern === true){
          if(thing.interns === true){
@@ -78,6 +82,7 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    }
 
+   // If lastTerm checkbox is true, check if the users current semester is equal to the users total amount of semesters.
    function checkTerm(thing){
       if($scope.lastTerm === true){
          if(thing.semesters[0].current === thing.semesters[0].total){
@@ -89,11 +94,13 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    }
 
+   // Sets values before filtering.
    $scope.lastTerm = false;
    $scope.intern = false;
    $scope.matchAll = false;
    $scope.showAll = false;
 
+   // Custom filter for companies.
    $scope.myCompanyFilter = (thing)=>{
       if($scope.showAll === false){
          if(
@@ -111,6 +118,7 @@ const SearchCtrl = angular.module('companyApp.SearchCtrl',[])
       }
    };
 
+   // Custom filter for students.
    $scope.myStudentFilter = (thing)=>{
       if($scope.showAll === false){
          if(
