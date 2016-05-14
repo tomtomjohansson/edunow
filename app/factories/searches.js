@@ -55,7 +55,6 @@ const searchFactory = angular.module('companyApp.search', [])
       return $http.post('/api/mypage',user);
    };
 
-
    return search;
 }]);
 
