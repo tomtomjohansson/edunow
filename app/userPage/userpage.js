@@ -14,9 +14,7 @@ const UserpageCtrl = angular.module('companyApp.UserpageCtrl',[])
    });
 
    $scope.tagInfo = (tag)=>{
-      $scope.currentTag = $scope.tags.find((x)=>{
-         return x._id == tag;
-      });
+      $scope.currentTag = $scope.tags.find((x) => x._id == tag);
       $scope.current = $scope.tags.indexOf($scope.currentTag);
    };
 

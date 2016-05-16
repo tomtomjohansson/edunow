@@ -6,15 +6,13 @@ const authFactory = angular.module('companyApp.auth', [])
    let auth = {};
 
    // After registration or login, function saves a user-token and a user in local-storage.
-   auth.saveToken = (data)=>{
+   auth.saveToken = data =>{
       $window.localStorage['user-token'] = data.token;
       $window.localStorage.user = JSON.stringify(data.user);
    };
 
    // Returns the user-token. Used for checking for expiration time.
-   auth.getToken = ()=>{
-      return $window.localStorage['user-token'];
-   };
+   auth.getToken = ()=>$window.localStorage['user-token'];
 
    // Checks if a user is logged in and if the token has expired.
    auth.isLoggedIn = ()=>{
@@ -37,14 +35,14 @@ const authFactory = angular.module('companyApp.auth', [])
    };
 
    // Http-request for registration. User is object from registration form. Returns an object and a web-token. Saves those in saveToken-function.
-   auth.register = (user)=>{
+   auth.register = user=>{
       return $http.post('/api/authenticate/register', user).success((data)=>{
          auth.saveToken(data);
       });
    };
 
    // Http-request for registration. User is object from login form. Returns an object and a web-token. Saves those in saveToken-function.
-   auth.logIn = (user)=>{
+   auth.logIn = user=>{
       return $http.post('/api/authenticate/login', user).success((data)=>{
          auth.saveToken(data);
       });
